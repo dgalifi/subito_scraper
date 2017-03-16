@@ -14,3 +14,5 @@ class SubitoSingleItemList(scrapy.Item):
     title = scrapy.Field()
     category = scrapy.Field()
     link = scrapy.Field()
+    date_scraped = scrapy.Field()
+    

@@ -42,5 +42,16 @@ class MongoPipeline(object):
         self.client.close()
 
     def process_item(self, item, spider):
-        self.db[self.collection_name].insert(dict(item))
+
+        cursor = self.db[self.collection_name].find({'name':dict(item)['name']})
+
+        if cursor.count() == 0:
+            print(dict(item)['name'])
+            print('New Doc! : {0}'.format(cursor.count()))
+            self.db[self.collection_name].insert(dict(item))
+        # else:
+        #     # update date_scraped
+        #     print('Numero duplicati: {0}'.format(cursor.count()))
+        #     self.db[self.collection_name].update_one({'name': dict(item)['name']}, {'date_scraped': dict(item)['date_scraped']})
+        # 
         return item

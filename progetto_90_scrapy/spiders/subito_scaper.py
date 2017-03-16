@@ -4,12 +4,19 @@ import logging
 
 from scrapy.loader import ItemLoader
 from progetto_90_scrapy.items import SubitoSingleItemList
-
+import datetime as datetime
 
 class SubitoScaperSpider(scrapy.Spider):
     name = "subito"
     allowed_domains = ["subito.it"]
-    start_urls = ['http://www.subito.it/annunci-italia/vendita/moto-e-scooter/?q=bmw+ninet']
+
+    current_date = (datetime.datetime.today()).replace(hour=0, minute=0, second=0, microsecond=0)
+
+    def start_requests(self):
+        urls = ['http://www.subito.it/annunci-italia/vendita/moto-e-scooter/?q=bmw+ninet']
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
+    #start_urls = ['http://www.subito.it/annunci-italia/vendita/moto-e-scooter/?q=bmw+ninet']
 
     def parse(self, response):
         desc_list = response.css('div.item_description')
@@ -20,6 +27,7 @@ class SubitoScaperSpider(scrapy.Spider):
             current_item['title'] = desc.css('h2>a::attr(title)').extract_first()
             current_item['name'] = desc.css('h2>a::attr(name)').extract_first()
             current_item['link'] = desc.css('h2>a::attr(href)').extract_first()
+            current_item['date_scraped'] = self.current_date
             yield current_item
             # yield {
             #     'category': desc.css('span.item_category::text').extract_first(),
