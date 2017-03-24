@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "pytalk": "^1.0.5"
   },
   "dependencies": {
     "hapi": "^16.1.0",
