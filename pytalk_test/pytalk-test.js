@@ -4,7 +4,7 @@ const Hapi = require('hapi');
 const pytalk = require('pytalk');
 const server = new Hapi.Server();
 
-server.connection({ port: 8000, host: 'localhost' });
+server.connection({ port: 8181, host: 'localhost' });
 
 let worker = pytalk.worker('test-scraper.py');
 
