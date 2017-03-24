@@ -12,6 +12,7 @@
     "pytalk": "^1.0.5"
   },
   "dependencies": {
-    "hapi": "^16.1.0"
+    "hapi": "^16.1.0",
+    "pytalk": "^1.0.5"
   }
 }

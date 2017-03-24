@@ -4,7 +4,7 @@ const Hapi = require('hapi');
 const pytalk = require('pytalk');
 const server = new Hapi.Server();
 
-server.connection({ port: 3000, host: 'localhost' });
+server.connection({ port: 8000, host: 'localhost' });
 
 let worker = pytalk.worker('test-scraper.py');
 
@@ -16,19 +16,6 @@ server.route({
         reply('Hello, world!');
     }
 });
-
-var testFunc = function(callback) {
-    console.log('Doing something');
-    setTimeout(function() {
-        console.log("...");
-
-        var ret = 'done';
-        var err = '';
-
-        callback(err, ret);
-
-    }, 3000);
-}
 
 
 server.route({
