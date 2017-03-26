@@ -10,5 +10,5 @@ describe('# Pytalk test', () => {
                 assert.equal(res.statusCode, 200);
             });
         });
-    }); 
+    });
 }); 
