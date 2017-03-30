@@ -13,7 +13,7 @@ server.route({
     method: 'GET',
     path: '/',
     handler: function(request, reply) {
-        reply('This is a pytalk test!');
+        reply('This is a pytalk test 1!');
     } 
 });
 
