@@ -15,7 +15,7 @@ server.route({
     handler: function(request, reply) {
         reply('This is a pytalk test 1!');
     } 
-});
+}); 
 
 
 server.route({
