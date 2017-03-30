@@ -14,7 +14,7 @@ server.route({
     path: '/',
     handler: function(request, reply) {
         reply('This is a pytalk test!');
-    }
+    } 
 });
 
 
